@@ -2,21 +2,28 @@
 
 This repository contains a Databricks notebook that can be used to help schedule and automate the starting and stopping of Databricks SQL Warehouses. This solution is designed be used with Databricks Workflows for scheduling and notifications.
 
+This notebook automatically leverages the Databricks PAT of the user or service principal that is running the job; therefore, ensure that this account has permissions to update the SQL Warehouse. 
+
 
 ## How to use this notebook
 
-This notebook should be triggered using Databricks Workflows. Users can either import this notebook (`update_sql_warehouse.py`) into their Workspace, or use a Git reference to this repository.
-<br>
-<img src="img/git_reference.png" alt="git reference example" width="500"/>
+This notebook should be triggered using Databricks Workflows. Users can either import this notebook (`update_sql_warehouse.py`) into the Databricks Workspace, or use a Git reference to this repository.
 
-Once a job is created, add a task to point to the `update_sql_warehouse.py` notebook.
+<img src="img/git_reference.png" width="500"/>
+
+Once a job is created, add a task to point to the `update_sql_warehouse.py` notebook. 
+
+<img src="img/repo_path.png"  width="500"/>
+
+Then leverage the Jobs scheduler to set when should this task should be executed:
+
+<img src="img/schedule.png" width="500"/>
 
 
 ### Parameters
 
 This notebook uses [Databricks widgets](https://docs.databricks.com/notebooks/widgets.html) to configure the how the SQL warehouse should be updated.
 
-For `Optional` parameters below, if included; the Warehouse definition will be updated to reflect the new values.
 
  ###### [Required] `warehouse_id `
  
@@ -46,6 +53,8 @@ For `Optional` parameters below, if included; the Warehouse definition will be u
  - `XXXLARGE`: 3X-Large
  - `XXXXLARGE`: 4X-Large
 
+_Changing the cluster size will cause the Warehouse to restart if it is already running._
+
  ###### [Optional] `min_num_clusters ` 
  This parameter sets the minimum number of clusters in an endpoint. `max_num_clusters` must be >= `min_num_clusters ` 
 
@@ -65,15 +74,18 @@ For `Optional` parameters below, if included; the Warehouse definition will be u
  - `False`: Use classic compute.
 
 
-
-
 ### Starting a SQL Warehouse 
+
+<img src="img/start.png" alt="git reference example" width="500"/>
 
 ### Stopping a SQL Warehouse 
 
+<img src="img/stop.png" alt="git reference example" width="500"/>
+
 ### Updating a SQL Warehouse 
+<img src="img/update.png" alt="git reference example" width="500"/>
 
-### Basic Example
+## Basic Example
 
-### Advanced Example
+## Advanced Example
 
