@@ -86,18 +86,18 @@ _Changing the cluster size will cause the Warehouse to restart if it is already 
 <img src="img/update.png" alt="git reference example" width="500"/>
 
 ## Best Practices
-- Leverage a Cluster Pool set to use All Spot Instances with the smallest VM
+- Leverage a Cluster Pool set to use All Spot Instances with the smallest VM option:
     - Azure: `Standard_F4`
     - AWS: `m4.large`
 - Use a __Single Node cluster__ & the Cluster Pool to execute the job
 
-<img src="img/cluster_size.png" alt="git reference example" width="500"/>
+<img src="img/cluster_size.png" alt="git reference example" width="600"/>
 
 - Use Databricks job features to help with notifications and retries if needed.
 
 - If using Spot Instances, make sure retries is configured in the case eviction occurs.
 
-- When resizing the endpoint i.e SMALL -> LARGE. This will trigger a restart of the endpoint, which will terminate any active queries; therefore use caution when performing a endpoint resize.
+- When resizing the endpoint i.e SMALL -> LARGE. This will trigger a restart of the endpoint, which will terminate any active queries; therefore use caution when performing an endpoint resize.
 
 - Job/Automated clusters usually take 3-5 minutes to spin up; therefore, account for that extra time when scheduling.
 - For help with generating a quartz cron expression, use the following: [Link](https://www.freeformatter.com/cron-expression-generator-quartz.html)
@@ -113,11 +113,10 @@ During the __weekend and outside of core business hours on weekdays__, we want t
 
 In addition to these configuration changes, we want to SQL Warehouse to automatically start at 7am Monday to Friday if it is not already started.
 
-_For help with generating a quartz cron expression use the following: [Link](https://www.freeformatter.com/cron-expression-generator-quartz.html)_
 
-In order to implement the follow we will need two Databricks jobs:
+In order to implement the following, we will need two Databricks jobs:
 
-__1. Start the Warehouse at 7am on Monday - Friday and update the Warehouse configuration for core hours.__
+__1. Start the Warehouse at 7am on Monday - Friday and update the configuration for core hours.__
 
 
 <img src="img/start_example.png" width="1000"/>
@@ -125,7 +124,7 @@ __1. Start the Warehouse at 7am on Monday - Friday and update the Warehouse conf
 
 
 
-__2. Update the Warehouse at 6pm on Monday - Friday and modify the Warehouse configuration for non-core hours.__
+__2. Update the Warehouse at 6pm on Monday - Friday and modify the configuration for non-core hours.__
 
 <img src="img/update_example.png" width="1000"/>
 <img src="img/update_cron.png" width="600"/>
