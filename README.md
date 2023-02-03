@@ -2,7 +2,7 @@
 
 This repository contains a Databricks notebook that can be used to help schedule and automate the starting, stopping, and configuration of Databricks SQL Warehouses. This solution is designed be used with Databricks Workflows for scheduling and notifications.
 
-This notebook automatically leverages the Databricks PAT of the user or service principal that is running the job; therefore, ensure that this account has permissions to update the SQL Warehouse. 
+This notebook __automatically leverages the Databricks PAT of the user or service principal that is running the job__; therefore, ensure that this account has permissions to update the SQL Warehouse. 
 
 
 ## How to use this notebook
